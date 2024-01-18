@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>State Machine Demo</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/site.wizard.0.css">
+
+</head>
+
+<body>
+    <div class="container mt-5">
+        <!-- Bootstrap Tab Navigation -->
+        <ul class="nav nav-tabs" id="myTabs">
+            <li class="nav-item">
+                <a class="nav-link active" id="stateMachineTab" data-toggle="tab" href="#stateMachine">State Machine</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="testLabTab" data-toggle="tab" href="#testLab">Test Lab</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="hWizardTab" data-toggle="tab" href="#hWizard">Wizard (Horizontal)</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="vWizardTab" data-toggle="tab" href="#vWizard">Wizard (Vertical)</a>
+            </li>
+        </ul>
+
+        <!-- Tab Content -->
+        <div class="tab-content">
+            <!-- State Machine Tab -->
+            <div class="tab-pane fade show active" id="stateMachine">
+                <!-- Fieldset for States -->
+                <fieldset class="border p-2">
+                    <legend class="w-auto">States</legend>
+                    <table id="states-table" class="table table-bordered">
+
+                        <!-- Table content for states will be populated dynamically -->
+                    </table>
+                </fieldset>
+
+                <!-- Fieldset for Transitions -->
+                <fieldset class="border p-2">
+                    <legend class="w-auto">Transitions</legend>
+                    <table id="transitions-table" class="table table-bordered">
+                        <!-- Table content for transitions will be populated dynamically -->
+                    </table>
+                </fieldset>
+            </div>
+
+            <!-- Test Lab Tab -->
+            <div class="tab-pane fade" id="testLab">
+                <!-- Display Current State and Trigger Transitions -->
+                <div class="mt-3">
+                    <h5>Current State:</h5>
+                    <p id="currentStateDisplay">No state selected</p>
+                </div>
+
+                <!-- Dropdown for Triggering Transitions -->
+                <div class="mt-3">
+                    <h5>Possible Transitions:</h5>
+                    <select class="form-control" id="currentTransitions">
+                        <!-- Dropdown options will be populated dynamically -->
+                    </select>
+                    <hr />
+                    <div id="stateChangeDiv">
+                        <h5>State Change Log</h5>
+                        <textarea id="stateChangeLog" rows="20" readonly></textarea>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Horizontal Wizard -->
+            <div class="tab-pane fade" id="hWizard">
+                <h4>Horizontal Wizard</h4>
+                <div class="wizard-outer">
+                    <div id="wizard-horizontal" class="wizard-horizontal">
+                        <div id="wizard-header-h" class="wizard-header"></div>
+                        <div id="wizard-content-h" class="wizard-content">
+                            <!-- Dynamic content will be loaded here based on the state -->
+                        </div>
+                        <div class="wizard-controls">
+                            <button id="prev-button-h" class="wizard-button">Prev</button>
+                            <div class="wizard-controls-right">
+                                <button id="next-button-h" class="wizard-button">Next</button>
+                                <button id="cancel-button-h" class="wizard-button">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vertical Wizard -->
+            <div class="tab-pane fade" id="vWizard">
+                <h4>Vertical Wizard</h4>
+                <div class="wizard-outer">
+                    <div id="wizard-vertical" class="wizard-vertical">
+                        <div class="wizard-sidebar">
+                            <div class="wizard-steps">
+                                <!-- Steps will be listed here -->
+                                <div class="wizard-step">Step 1</div>
+                                <div class="wizard-step">Step 2</div>
+                                <!-- etc. -->
+                            </div>
+                            <div class="wizard-controls">
+                                <button id="prev-button-v" class="wizard-button">Prev</button>
+                                <div class="wizard-controls-right">
+                                    <button id="next-button-v" class="wizard-button">Next</button>
+                                    <button id="cancel-button-v" class="wizard-button">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wizard-main">
+                            <div id="wizard-header-v" class="wizard-header"></div>
+                            <div id="wizard-content-v" class="wizard-content">
+                                <!-- Dynamic content will be loaded here based on the state -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS and your custom JavaScript for initialization -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/html.js"></script>
+    <script type="text/javascript" src="data/state-machine.1.js" id="stateMachineScript"></script>
+    <script type="text/javascript" src="data/fsm-horizontal.js" id="stateMachineScript"></script>
+    <script type="text/javascript" src="js/state-machine.wizard.0.js"></script>
+    <script type="text/javascript" src="js/wizard.js"></script>
+    <script type="text/javascript" src="js/app.wizard.0.js"></script>
+    <!--
+    <script type="text/javascript" src="js/app.wizard.0.js"></script>
+    -->
+
+    <script>
+        var settings = {
+            elementIds: {
+                next: 'next-button-h',
+                previous: 'prev-button-h',
+                cancel: 'cancel-button-h',
+                header: 'wizard-header-h',
+                content: 'wizard-content-h'
+            },
+            onTransition: (id) => {
+                alert(id);
+            },
+            onFinish: () => {
+                alert('all done here!');
+            },
+            states: [
+                {
+                    name: 'filters',
+                    behaviors: {
+                        onArrive: () => { },
+                        onLeave: () => { },
+                        onValidate: (isValid) => { },
+                        validate: () => { return true; }
+                    },
+                    buildElement: ()=>{ 
+                        const h3 = document.createElement("h3");
+                        h3.innerText = `${name}`;
+                        return h3;
+                    }
+                },
+                {
+                    name: 'setto',
+                    behaviors: {
+                        onArrive: () => { },
+                        onLeave: () => { },
+                        onValidate: (isValid) => { },
+                        validate: () => { return true; }
+                    },
+                    buildElement: ()=>{ 
+                        const h3 = document.createElement("h3");
+                        h3.innerText = `${name}`;
+                        return h3;
+                    }
+                },
+                {
+                    name: 'confirm',
+                    behaviors: {
+                        onArrive: () => { },
+                        onLeave: () => { },
+                        onValidate: (isValid) => { },
+                        validate: () => { return true; }
+                    },
+                    buildElement: ()=>{ 
+                        const h3 = document.createElement("h3");
+                        h3.innerText = `${name}`;
+                        return h3;
+                    }
+                },
+                {
+                    name: 'success',
+                    behaviors: {
+                        onArrive: () => { },
+                        onLeave: () => { },
+                        onValidate: (isValid) => { },
+                        validate: () => { return true; }
+                    },
+                    buildElement: ()=>{ 
+                        const h3 = document.createElement("h3");
+                        h3.innerText = `${name}`;
+                        return h3;
+                    }
+                },
+                {
+                    name: 'failure',
+                    behaviors: {
+                        onArrive: () => { },
+                        onLeave: () => { },
+                        onValidate: (isValid) => { },
+                        validate: () => { return true; }
+                    },
+                    buildElement: ()=>{ 
+                        const h3 = document.createElement("h3");
+                        h3.innerText = `${name}`;
+                        return h3;
+                    }
+                }
+            ],
+            transitions: [
+                {
+                    from: 'filters',
+                    to: 'setto',
+                    behavior:{
+                        onArrive: ()=>{},
+                        onLeave: ()=>{}
+                    },
+                    requiresValidation: true
+                },
+                {
+                    from: 'setto',
+                    to: 'confirm',
+                    behavior:{
+                        onArrive: ()=>{},
+                        onLeave: ()=>{}
+                    },
+                    requiresValidation: true
+                },
+                {
+                    from: 'confirm',
+                    to: 'post',
+                    behavior:{
+                        onArrive: ()=>{},
+                        onLeave: ()=>{}
+                    }
+                }
+            ]
+
+        };
+        WIZARD.init(settings, wizarddata);
+
+    </script>
+</body>
+
+</html>

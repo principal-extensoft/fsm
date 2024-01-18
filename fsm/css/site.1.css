@@ -1,0 +1,32 @@
+/* CSS styles for tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  table th,
+  table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  /* Style the table header row */
+  table thead th {
+    background-color: #333;
+    color: #fff;
+  }
+
+  /* Apply these styles to make the textarea take up maximum width */
+#stateChangeDiv {
+    display: flex;          /* Use flexbox to control the layout */
+    flex-direction: column; /* Stack elements vertically */
+  }
+  
+  #stateChangeLog {
+    flex: 1;                /* Grow and take up available space */
+    width: 100%;            /* 100% width of its parent (the #stateChangeLog div) */
+    resize: none;           /* Disable textarea resizing by the user */
+  }
+  
+  

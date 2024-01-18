@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>State Machine Demo</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/site.css">
+
+</head>
+<body>
+    <div class="container mt-5">
+        <!-- Bootstrap Tab Navigation -->
+        <ul class="nav nav-tabs" id="myTabs">
+            <li class="nav-item">
+                <a class="nav-link active" id="stateMachineTab" data-toggle="tab" href="#stateMachine">State Machine</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="testLabTab" data-toggle="tab" href="#testLab">Test Lab</a>
+            </li>
+        </ul>
+
+        <!-- Tab Content -->
+        <div class="tab-content">
+            <!-- State Machine Tab -->
+            <div class="tab-pane fade show active" id="stateMachine">
+                <!-- Fieldset for States -->
+                <fieldset class="border p-2">
+                    <legend class="w-auto">States</legend>
+                    <table id="states-table" class="table table-bordered">
+
+                        <!-- Table content for states will be populated dynamically -->
+                    </table>
+                </fieldset>
+
+                <!-- Fieldset for Transitions -->
+                <fieldset class="border p-2">
+                    <legend class="w-auto">Transitions</legend>
+                    <table id="transitions-table" class="table table-bordered">
+                        <!-- Table content for transitions will be populated dynamically -->
+                    </table>
+                </fieldset>
+            </div>
+
+            <!-- Test Lab Tab -->
+            <div class="tab-pane fade" id="testLab">
+                <!-- Display Current State and Trigger Transitions -->
+                <div class="mt-3">
+                    <h5>Current State:</h5>
+                    <p id="currentStateDisplay">No state selected</p>
+                </div>
+
+                <!-- Dropdown for Triggering Transitions -->
+                <div class="mt-3">
+                    <h5>Possible Transitions:</h5>
+                    <select class="form-control" id="currentTransitions">
+                        <!-- Dropdown options will be populated dynamically -->
+                    </select>
+                    <hr/>
+                    <div id="stateChangeDiv">
+                            <h5>State Change Log</h5>
+                            <textarea id="stateChangeLog" rows="20"  readonly></textarea>
+                    </div>
+                          
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS and your custom JavaScript for initialization -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/html.js"></script>
+    <script type="text/javascript" src="data/state-machine.1.js" id="stateMachineScript"></script>    
+    <script type="text/javascript" src="js/state-machine.js"></script>
+    <script type="text/javascript" src="js/app.1.js"></script>
+
+</body>
+</html>

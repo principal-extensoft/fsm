@@ -1,0 +1,117 @@
+/* CSS styles for tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  table th,
+  table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  /* Style the table header row */
+  table thead th {
+    background-color: #333;
+    color: #fff;
+  }
+
+  /* Apply these styles to make the textarea take up maximum width */
+#stateChangeDiv {
+    display: flex;          /* Use flexbox to control the layout */
+    flex-direction: column; /* Stack elements vertically */
+  }
+  
+  #stateChangeLog {
+    flex: 1;                /* Grow and take up available space */
+    width: 100%;            /* 100% width of its parent (the #stateChangeLog div) */
+    resize: none;           /* Disable textarea resizing by the user */
+  }
+
+
+
+.wizard-outer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* This will push the content and controls apart */
+  height: 80vh; /* This makes the wizard take the full height of the viewport */
+  padding: 10px;
+  background-color: gainsboro;
+}
+
+.wizard-horizontal {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Fill the height of the wizard-outer */
+}
+
+.wizard-vertical {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.wizard-header {
+  background-color: darkgray;
+  height: 2rem;
+  padding: 2px 4px;
+}
+
+.wizard-content {
+  flex-grow: 1; /* This will make the content fill the available space */
+  padding: 5px;
+  overflow-y: auto; /* Adds scroll to content if it overflows */
+  border: 1px solid #ccc;
+  height: 100%;
+  margin-bottom: 5px;
+  background-color: aliceblue;
+}
+
+.wizard-controls {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 10%;
+}
+
+/* Additional class for grouping Next and Cancel buttons */
+.wizard-controls-right {
+  display: flex;
+}
+
+.wizard-button {
+  padding: 2px 4px;
+  margin: 2px;
+}
+
+/* Sidebar Styles */
+.wizard-sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Aligns steps at the top and controls at the bottom */
+  flex-basis: 20%; /* Adjust width of sidebar */
+  height: 100%;
+  border-right: 1px solid #ccc;
+  padding: 10px;
+}
+
+/* Main Area Styles */
+.wizard-main {
+  display: flex;
+  flex-direction: column; /* Stack header and content vertically */
+  flex-grow: 1; /* Take remaining space */
+  height: 100%;
+}
+
+.wizard-steps {
+  flex-basis: 20%;
+  border-right: 1px solid #ccc;
+  padding: 10px;
+}
+
+.wizard-step {
+  margin-bottom: 10px;
+  padding: 5px;
+  border: 1px solid #ccc;
+}
